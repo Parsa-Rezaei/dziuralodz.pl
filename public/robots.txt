@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://parsa-rezaei.github.io/-d-Pothole-ZDiT-Road-Damage-Compensation-Kit-/sitemap.xml
