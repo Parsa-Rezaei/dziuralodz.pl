@@ -4,9 +4,11 @@
   "description": "Kreator zgłoszenia szkody po wjechaniu w dziurę w drodze w Łodzi (ZDiT / PZU).",
   "scripts": {
     "build": "npm run build:css && npm run build:vendor",
-    "build:css": "tailwindcss -c tailwind.config.js -i src/input.css -o assets/styles.css --minify",
-    "build:vendor": "mkdir -p vendor && cp node_modules/pdfmake/build/pdfmake.min.js node_modules/pdfmake/build/vfs_fonts.js vendor/ && sed -i '/sourceMappingURL/d' vendor/pdfmake.min.js",
-    "test": "node tests/smoke.mjs"
+    "build:css": "tailwindcss -c tailwind.config.js -i src/input.css -o public/assets/styles.css --minify",
+    "build:vendor": "mkdir -p public/vendor && cp node_modules/pdfmake/build/pdfmake.min.js node_modules/pdfmake/build/vfs_fonts.js public/vendor/ && sed -i '/sourceMappingURL/d' public/vendor/pdfmake.min.js",
+    "test:verify": "node --test tests/verify.test.mjs",
+    "test:e2e": "node tests/e2e.test.js",
+    "test": "node --test tests/verify.test.mjs && node tests/e2e.test.js"
   },
   "devDependencies": {
     "pdfmake": "0.2.23",
