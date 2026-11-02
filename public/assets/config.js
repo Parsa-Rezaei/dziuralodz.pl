@@ -6,7 +6,7 @@
    ===================================================================== */
 window.SITE_CONFIG = Object.freeze({
   siteName: 'DziuraŁódź',
-  siteUrl: 'https://TWOJA-DOMENA.pl/',
+  siteUrl: 'https://dziuralodz.pl/',
 
   // Cena pakietu PDF w zł – musi być równa cenie produktu w Stripe i zmiennej EXPECTED_AMOUNT (w groszach: 999).
   price: 9.99,
@@ -14,7 +14,7 @@ window.SITE_CONFIG = Object.freeze({
   // Link płatności Stripe (Payment Link, tylko BLIK), np. 'https://buy.stripe.com/abc123'.
   // W Stripe: After payment → Redirect → https://TWOJA-DOMENA.pl/?platnosc=sukces&session_id={CHECKOUT_SESSION_ID}
   // Pusty = sprzedaż wyłączona (na komputerze lokalnym działa tryb demonstracyjny z darmowym PDF).
-  paymentUrl: '',
+  paymentUrl: 'https://buy.stripe.com/7sY8wR1vtcJ77b4c3t83C05',
 
   // Weryfikacja płatności po stronie serwera (functions/api/verify.js na Cloudflare Pages).
   // Wymagana do sprzedaży – bez niej przycisk płatności się nie uruchomi.
@@ -22,9 +22,9 @@ window.SITE_CONFIG = Object.freeze({
 
   // Dane sprzedawcy do regulaminu i polityki prywatności.
   seller: Object.freeze({
-    name: '[imię i nazwisko / firma]',
-    address: '[adres]',
-    email: '[e-mail kontaktowy]'
+    name: 'Mohammad Parsa Rezaei',
+    address: 'ul. Politechniki 3B, pok. 717, 93-590 Łódź',
+    email: 'parsa.rezaei.2014@gmail.com'
   }),
 
   // ── REKLAMA LOKALNA / PARTNERZY ───────────────────────────────────────
