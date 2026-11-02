@@ -51,13 +51,18 @@ export function evaluateSession(s, ref, env, nowSeconds = Math.floor(Date.now() 
   const expected = Number(env.EXPECTED_AMOUNT || 999);
   const maxAgeDays = Number(env.MAX_AGE_DAYS || 30);
   const allowTest = env.ALLOW_TEST_MODE === 'true';
+  // Adaptive Pricing (always on for Payment Links) may present the price in the buyer's
+  // local currency; Stripe then reports the original PLN amounts in currency_conversion.
+  const cc = s.currency_conversion && typeof s.currency_conversion === 'object' ? s.currency_conversion : null;
+  const srcCurrency = cc ? String(cc.source_currency || '').toLowerCase() : s.currency;
+  const srcSubtotal = cc ? cc.amount_subtotal : s.amount_subtotal;
   const valid =
     s.object === 'checkout.session' &&
     s.mode === 'payment' &&
     s.status === 'complete' &&
     s.payment_status === 'paid' &&
-    s.currency === 'pln' &&
-    s.amount_subtotal === expected &&
+    srcCurrency === 'pln' &&
+    srcSubtotal === expected &&
     s.amount_total > 0 &&
     s.payment_link === env.PAYMENT_LINK_ID &&
     s.client_reference_id === ref &&
